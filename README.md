@@ -162,15 +162,23 @@ curl -fsSL -o install.sh https://cdn.jsdelivr.net/gh/1186258278/OpenClawChineseT
 | **稳定版** | `@latest` | 手动发布 | 生产环境，经过测试，推荐使用 |
 | **最新版** | `@nightly` | 每小时自动 | 测试新功能，追踪上游最新代码 |
 
-### 方式 1: npm 安装
+### 方式 1: npm / pnpm / yarn 安装
 
 ```bash
-# 稳定版（推荐）
-npm install -g @qingchencloud/openclaw-zh@latest
+# npm 安装（推荐）
+npm install -g @qingchencloud/openclaw-zh@latest      # 稳定版
+npm install -g @qingchencloud/openclaw-zh@nightly     # 最新版
 
-# 最新版（每小时更新，追踪上游）
-npm install -g @qingchencloud/openclaw-zh@nightly
+# pnpm 安装
+pnpm add -g @qingchencloud/openclaw-zh@latest         # 稳定版
+pnpm add -g @qingchencloud/openclaw-zh@nightly        # 最新版
+
+# yarn 安装
+yarn global add @qingchencloud/openclaw-zh@latest     # 稳定版
+yarn global add @qingchencloud/openclaw-zh@nightly    # 最新版
 ```
+
+> 💡 我们发布的是标准 npm 包，**npm / pnpm / yarn 都可以安装**，选择你习惯的包管理器即可。
 
 ### 方式 2: 手动下载
 
