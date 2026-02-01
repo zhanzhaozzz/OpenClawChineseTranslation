@@ -61,11 +61,15 @@ def inject_panel():
     
     # 读取并注入面板数据
     if os.path.exists(panel_data_path):
-        panel_data = read_file(panel_data_path)
-        # 将 PANEL_DATA 占位符替换为实际数据
+        import json
+        with open(panel_data_path, 'r', encoding='utf-8') as f:
+            panel_data_obj = json.load(f)
+        # 将 JSON 转换为 JS 对象字面量，确保换行符被正确转义
+        panel_data_js = json.dumps(panel_data_obj, ensure_ascii=False)
+        # 使用 lambda 避免 re.sub 对反斜杠的解释
         panel_js = re.sub(
             r'/\*PANEL_DATA_PLACEHOLDER\*/\{[\s\S]*?\}/\*END_PANEL_DATA\*/',
-            panel_data,
+            lambda m: panel_data_js,
             panel_js
         )
         print(f"  ✅ 已注入面板数据")
